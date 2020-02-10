@@ -6,6 +6,30 @@ class App extends Component {
   state = {
     todos: todosList
   };
+
+  handleToggleComplete = (event, todoIdToDelete) => {
+    //create copy of data to update
+    const newTodos = this.state.todos.slice();
+    //modify copy
+    const newNewTodos = newTodos.map(todo=> {
+      //find todo to modify
+      if (todo.id === todoIdToDelete) {
+        //then change its completed value from false to true
+      todo.completed = !todo.completed;
+      }
+      return todo;
+
+    })
+
+  }
+  handleAddTodo = event => {
+    if (event.key === 'Enter') {
+      const newTodo = {
+        userId:1,
+        id: Math.floor(Math.random() * 1000000)
+      }
+    }
+  }
   render() {
     return (
       <section className="todoapp">
@@ -14,10 +38,12 @@ class App extends Component {
           <input
             className="new-todo"
             placeholder="What needs to be done?"
+            onKeyDown={this.handleAddTodo}
             autofocus
           />
         </header>
-        <TodoList todos={this.state.todos} />
+        <TodoList
+        todos={this.state.todos} />
         <footer className="footer">
           <span className="todo-count">
             <strong>0</strong> item(s) left
@@ -38,6 +64,7 @@ class TodoItem extends Component {
             className="toggle"
             type="checkbox"
             checked={this.props.completed}
+            onChange = {event => this.props.handleToggleComplete(event, this.props.id)}
           />
           <label>{this.props.title}</label>
           <button className="destroy" />
@@ -53,7 +80,12 @@ class TodoList extends Component {
       <section className="main">
         <ul className="todo-list">
           {this.props.todos.map(todo => (
-            <TodoItem title={todo.title} completed={todo.completed} />
+            <TodoItem
+            title={todo.title}
+            completed={todo.completed}
+            id={todo.id}
+            handleToggleComplete={this.props.handleToggleComplete}
+            />
           ))}
         </ul>
       </section>

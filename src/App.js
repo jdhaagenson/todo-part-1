@@ -44,29 +44,6 @@ class App extends Component {
     todos = todos.filter(a => !a.completed);
     this.setState({ todos: todos });
   };
-  // handleToggleComplete = (event, todoIdToDelete) => {
-  //   //create copy of data to update
-  //   const newTodos = this.state.todos.slice();
-  //   //modify copy
-  //   const newNewTodos = newTodos.map(todo=> {
-  //     //find todo to modify
-  //     if (todo.id === todoIdToDelete) {
-  //       //then change its completed value from false to true
-  //     todo.completed = !todo.completed;
-  //     }
-  //     return todo;
-
-    // })
-
-  // }
-  // handleAddTodo = event => {
-  //   if (event.key === 'Enter') {
-  //     const newTodo = {
-  //       userId:1,
-  //       id: Math.floor(Math.random() * 1000000)
-  //     }
-  //   }
-  // }
   render() {
     return (
       <section className="todoapp">

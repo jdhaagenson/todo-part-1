@@ -1,6 +1,6 @@
 {
   "name": "todos",
-  "homepage": "https://jdhaagenson.gitlab.io/todo-part-1",
+  "homepage": "https://jdhaagenson.gitlab.io/assessment---todo-app-part-1/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
